@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERDANT Kitchen &amp; Bowls — Seasonal Bowls Crafted from Local Soil</title>
+<meta name="description" content="Farm-to-table bowls, salads and cold-pressed juices built from seasonal ingredients grown within 100 miles of our kitchens. Order pickup or delivery.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231E3A2B'/%3E%3Cpath d='M9 10l7 13 7-13' fill='none' stroke='%23F9F8F3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#F9F8F3;
+  --green:#1E3A2B;
+  --green-2:#2A4D39;
+  --terra:#D96B43;
+  --terra-d:#C45A34;
+  --ink:#1A1A1A;
+  --ink-2:#4A4A44;
+  --sage:#E2E8E0;
+  --sage-2:#CBD6C8;
+  --white:#FFFFFF;
+  --top-h:112px;
+  --r-lg:20px; --r-md:14px; --r-sm:10px;
+  --font:'Plus Jakarta Sans',Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3,h4{margin:0;line-height:1.08;letter-spacing:-.02em;font-weight:800}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+section[id]{scroll-margin-top:calc(var(--top-h) + 64px)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:8px;background:var(--green);color:var(--canvas);padding:10px 16px;border-radius:999px;z-index:100;font-weight:700}
+.skip:focus{left:12px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid transparent;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;line-height:1;white-space:nowrap;transition:background .18s,color .18s,border-color .18s,transform .12s}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--green);color:var(--canvas)}
+.btn-primary:hover{background:var(--terra)}
+.btn-ghost{background:transparent;border-color:var(--green);color:var(--green)}
+.btn-ghost:hover{background:var(--green);color:var(--canvas)}
+.btn-lg{padding:16px 28px;font-size:16px}
+.badge-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--terra);color:#fff;font-size:12px;font-weight:800;transition:transform .2s}
+.badge-count.bump{transform:scale(1.35)}
+.badge-count[hidden]{display:none}
+
+/* ---------- Top utilities ---------- */
+.top{position:sticky;top:0;z-index:60}
+.announce{background:var(--green);color:var(--canvas);font-size:13px;font-weight:600;text-align:center;padding:9px 16px;letter-spacing:.01em}
+.announce b{color:#F2B79F;font-weight:700}
+.announce span.sep{opacity:.5;margin:0 10px}
+.header{background:var(--white);border-bottom:1px solid var(--sage)}
+.header-in{display:flex;align-items:center;gap:28px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.08em;color:var(--green)}
+.logo small{display:block;font-size:9.5px;letter-spacing:.2em;font-weight:700;color:var(--terra);margin-top:1px}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:var(--green);display:grid;place-items:center;transition:transform .25s}
+.logo:hover .logo-mark{transform:rotate(-8deg)}
+.loc{position:relative}
+.loc-btn{display:flex;align-items:center;gap:8px;border:1px solid var(--sage);background:var(--canvas);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600;transition:border-color .15s,background .15s}
+.loc-btn:hover{border-color:var(--green)}
+.loc-btn svg.chev{transition:transform .2s}
+.loc-btn[aria-expanded=true] svg.chev{transform:rotate(180deg)}
+.loc-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:270px;background:var(--white);border:1px solid var(--sage);border-radius:var(--r-md);padding:6px;display:none}
+.loc-menu.open{display:block}
+.loc-menu button{display:block;width:100%;text-align:left;background:none;border:0;border-radius:10px;padding:10px 12px}
+.loc-menu button:hover,.loc-menu button[aria-selected=true]{background:var(--sage)}
+.loc-menu strong{display:block;font-size:14px}
+.loc-menu span{font-size:12.5px;color:var(--ink-2)}
+.nav{display:flex;gap:6px;margin-left:auto}
+.nav a{padding:8px 14px;border-radius:999px;font-weight:600;font-size:15px;transition:background .15s,color .15s}
+.nav a:hover{background:var(--sage)}
+.header .btn{margin-left:4px}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--sage);background:var(--canvas);place-items:center}
+.mobile-nav{display:none;background:var(--white);border-bottom:1px solid var(--sage);padding:8px 24px 18px}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:14px 0;border-bottom:1px solid var(--sage);font-weight:700}
+
+/* ---------- Hero ---------- */
+.hero{padding:56px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-d)}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--terra)}
+.hero h1{font-size:clamp(42px,6.2vw,78px);color:var(--green);margin:18px 0 20px;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--terra)}
+.hero p.lead{font-size:18px;color:var(--ink-2);max-width:520px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 30px}
+.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--sage-2);background:var(--white);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--green)}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--terra)}
+.order-box{background:var(--white);border:1px solid var(--sage);border-radius:var(--r-lg);padding:20px;max-width:540px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--canvas);border:1px solid var(--sage);border-radius:999px;padding:4px;margin-bottom:16px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:11px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,color .2s,transform .12s}
+.seg button:active{transform:scale(.97)}
+.seg button:hover{background:var(--sage)}
+.seg button[aria-checked=true]{background:var(--green);color:var(--canvas)}
+.field{display:flex;gap:10px}
+.field label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.field input{flex:1;min-width:0;border:1px solid var(--sage-2);background:var(--canvas);border-radius:999px;padding:14px 18px;font-size:15px;transition:border-color .15s,background .15s}
+.field input::placeholder{color:#7C7F76}
+.field input:hover{border-color:var(--green)}
+.field input:focus{outline:none;border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(217,107,67,.35)}
+.order-meta{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:13.5px;color:var(--ink-2);font-weight:500}
+.order-meta svg{flex:none;color:var(--terra)}
+.hero-art{position:relative}
+.hero-frame{border-radius:32px;overflow:hidden;border:1px solid var(--sage);aspect-ratio:1/1;background:#E7ECE1}
+.hero-frame svg{width:100%;height:100%}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--sage);border-radius:999px;padding:9px 16px 9px 10px;font-size:13px;font-weight:700;animation:float 6s ease-in-out infinite;transition:border-color .2s,transform .2s}
+.chip:hover{border-color:var(--terra)}
+.chip em{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-style:normal;font-size:14px}
+.chip small{display:block;font-weight:500;font-size:11.5px;color:var(--ink-2);line-height:1.2}
+.chip.c1{top:8%;left:-6%}
+.chip.c2{top:44%;right:-5%;animation-delay:-2s}
+.chip.c3{bottom:7%;left:6%;animation-delay:-4s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hero-stamp{position:absolute;right:6%;top:-3%;width:104px;height:104px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;font-size:13px;line-height:1.15;transform:rotate(12deg);padding:10px}
+.hero-stamp b{display:block;font-size:26px;letter-spacing:-.03em}
+
+/* ---------- Menu ---------- */
+.menu{padding:24px 0 96px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,4vw,48px);color:var(--green)}
+.sec-head p{color:var(--ink-2);max-width:440px}
+.filters{position:sticky;top:var(--top-h);z-index:40;background:var(--canvas);border-top:1px solid var(--sage);border-bottom:1px solid var(--sage);margin-bottom:32px}
+.cats{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:10px 0 0}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex:none;position:relative;background:none;border:0;padding:12px 18px 14px;font-weight:700;font-size:15px;color:var(--ink-2);transition:color .15s}
+.cat::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--terra);transform:scaleX(0);transition:transform .22s}
+.cat:hover{color:var(--green)}
+.cat[aria-selected=true]{color:var(--green)}
+.cat[aria-selected=true]::after{transform:scaleX(1)}
+.cat sup{font-size:11px;font-weight:700;color:var(--terra-d);margin-left:3px}
+.diet-row{display:flex;align-items:center;gap:10px;padding:12px 0 14px;overflow-x:auto;scrollbar-width:none}
+.diet-row::-webkit-scrollbar{display:none}
+.diet-row > span{flex:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-right:4px}
+.pill{flex:none;border:1px solid var(--sage-2);background:var(--white);border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:background .15s,border-color .15s,color .15s,transform .12s}
+.pill:hover{border-color:var(--green)}
+.pill:active{transform:scale(.96)}
+.pill[aria-pressed=true]{background:var(--green);border-color:var(--green);color:var(--canvas)}
+.pill[aria-pressed=true]::before{content:"✓";font-size:12px}
+.clear{margin-left:auto;flex:none;background:none;border:0;font-size:13px;font-weight:700;color:var(--terra-d);text-decoration:underline;text-underline-offset:3px}
+.count{font-size:14px;color:var(--ink-2);margin-bottom:18px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--white);border:1px solid var(--sage);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s,transform .22s;animation:rise .35s both}
+.card:hover{border-color:var(--green);transform:translateY(-4px)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--sage)}
+.card-img svg{width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-img svg{transform:scale(1.05) rotate(1.2deg)}
+.macro{position:absolute;left:12px;top:12px;background:var(--white);border:1px solid var(--sage);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700;display:flex;gap:8px;align-items:center}
+.macro b{color:var(--terra-d)}
+.macro span{color:var(--ink-2);font-weight:600;font-size:11.5px;letter-spacing:.02em}
+.card-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.badge{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green);background:var(--sage);border-radius:6px;padding:3px 8px}
+.card h3{font-size:21px;color:var(--green);margin-bottom:8px;letter-spacing:-.015em;line-height:1.15}
+.ing{font-size:14px;color:var(--ink-2);flex:1;line-height:1.5}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--sage)}
+.price{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.add{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--green);background:transparent;color:var(--green);border-radius:999px;padding:9px 18px;font-weight:800;font-size:14px;transition:background .15s,color .15s,border-color .15s,transform .12s}
+.add:hover{background:var(--green);color:var(--canvas)}
+.add:active{transform:scale(.93)}
+.add.added{background:var(--terra);border-color:var(--terra);color:#fff}
+.empty{grid-column:1/-1;text-align:center;padding:64px 20px;border:1px dashed var(--sage-2);border-radius:var(--r-lg);color:var(--ink-2)}
+.empty b{display:block;font-size:20px;color:var(--green);margin-bottom:6px}
+
+/* ---------- Sourcing ---------- */
+.sourcing{background:var(--white);border-block:1px solid var(--sage);padding:96px 0}
+.src-grid{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:start}
+.src-left{position:sticky;top:calc(var(--top-h) + 40px)}
+.src-left h2{font-size:clamp(34px,4.4vw,56px);color:var(--green);margin:16px 0 20px}
+.src-left p{color:var(--ink-2);font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:32px 0;border:1px solid var(--sage);border-radius:var(--r-md);overflow:hidden}
+.stats div{padding:18px 16px;border-right:1px solid var(--sage)}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-size:30px;color:var(--terra-d);letter-spacing:-.03em;line-height:1}
+.stats span{font-size:12.5px;color:var(--ink-2);font-weight:600}
+.quote{background:var(--canvas);border:1px solid var(--sage);border-radius:var(--r-md);padding:22px}
+.quote p{font-weight:600;color:var(--green);font-size:16.5px;line-height:1.5}
+.quote cite{display:block;margin-top:12px;font-style:normal;font-size:13px;color:var(--ink-2);font-weight:600}
+.farms{display:grid;gap:16px}
+.farm{display:grid;grid-template-columns:96px 1fr auto;gap:20px;align-items:center;background:var(--canvas);border:1px solid var(--sage);border-radius:var(--r-lg);padding:18px;transition:border-color .2s,transform .2s,background .2s}
+.farm:hover{border-color:var(--green);background:#fff;transform:translateX(4px)}
+.farm:nth-child(even){margin-left:36px}
+.farm-ico{width:96px;height:96px;border-radius:16px;display:grid;place-items:center}
+.farm h3{font-size:19px;color:var(--green);margin-bottom:3px}
+.farm .where{font-size:13.5px;color:var(--ink-2);font-weight:500;margin-bottom:10px}
+.farm .grows{font-size:14px;margin-bottom:10px}
+.cert{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--green);color:var(--green);border-radius:999px;padding:4px 11px;font-size:11.5px;font-weight:800;letter-spacing:.03em}
+.cert svg{color:var(--terra)}
+.miles{text-align:right;min-width:78px}
+.miles b{display:block;font-size:32px;color:var(--green);letter-spacing:-.04em;line-height:1}
+.miles span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+
+/* ---------- Loyalty ---------- */
+.loyalty{background:var(--terra);color:var(--ink);padding:96px 0;overflow:hidden}
+.loy-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.loyalty .eyebrow{color:var(--ink)}
+.loyalty .eyebrow::before{background:var(--ink)}
+.loyalty h2{font-size:clamp(36px,5vw,64px);color:var(--canvas);margin:16px 0 18px;letter-spacing:-.035em}
+.loyalty .lead{font-size:18px;max-width:480px;font-weight:500}
+.benefits{margin:28px 0 32px;display:grid;gap:14px}
+.benefits li{display:flex;gap:14px;align-items:flex-start;font-weight:600}
+.benefits li span{flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:var(--canvas);display:grid;place-items:center;margin-top:1px}
+.benefits small{display:block;font-weight:500;font-size:14.5px;opacity:.85}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.store{display:flex;align-items:center;gap:12px;background:var(--green);color:var(--canvas);border-radius:14px;padding:11px 20px 11px 16px;border:1px solid var(--green);transition:background .18s,transform .12s,color .18s}
+.store:hover{background:var(--canvas);color:var(--green)}
+.store:active{transform:scale(.96)}
+.store small{display:block;font-size:11px;font-weight:500;opacity:.85;line-height:1.1}
+.store b{display:block;font-size:17px;line-height:1.15;letter-spacing:-.01em}
+.phone-stage{position:relative;display:grid;place-items:center;min-height:560px}
+.phone-stage::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:1.5px solid rgba(26,26,26,.2)}
+.phone-stage::after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;border:1.5px dashed rgba(26,26,26,.15)}
+.phone{position:relative;z-index:2;width:290px;height:580px;background:var(--ink);border-radius:46px;padding:11px;transform:rotate(4deg);transition:transform .35s}
+.phone:hover{transform:rotate(0)}
+.screen{background:var(--canvas);border-radius:36px;height:100%;padding:22px 18px;overflow:hidden;position:relative}
+.screen .notch{position:absolute;left:50%;top:9px;transform:translateX(-50%);width:84px;height:22px;background:var(--ink);border-radius:14px}
+.scr-top{display:flex;justify-content:space-between;align-items:center;margin-top:22px;font-size:12px;font-weight:700;color:var(--green)}
+.scr-top span.logo-s{letter-spacing:.14em}
+.scr-hi{font-size:22px;font-weight:800;color:var(--green);letter-spacing:-.02em;margin:14px 0 12px;line-height:1.1}
+.pts{background:var(--green);color:var(--canvas);border-radius:18px;padding:16px;display:flex;align-items:center;gap:14px}
+.pts svg{flex:none}
+.pts b{display:block;font-size:26px;letter-spacing:-.03em;line-height:1}
+.pts small{font-size:11.5px;opacity:.8;font-weight:600}
+.scr-h{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:16px 0 8px}
+.scr-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--sage);border-radius:14px;padding:9px;margin-bottom:8px}
+.scr-row i{width:40px;height:40px;border-radius:10px;flex:none}
+.scr-row b{font-size:12.5px;display:block;line-height:1.2;color:var(--green)}
+.scr-row small{font-size:11px;color:var(--ink-2)}
+.scr-row em{margin-left:auto;font-style:normal;font-size:11px;font-weight:800;background:var(--terra);color:#fff;padding:5px 9px;border-radius:999px}
+.scr-secret{background:var(--sage);border:1px dashed var(--green);border-radius:14px;padding:11px 12px;font-size:12px;font-weight:700;color:var(--green);display:flex;gap:8px;align-items:center}
+.float-note{position:absolute;z-index:3;background:var(--canvas);border:1px solid rgba(26,26,26,.15);border-radius:14px;padding:10px 14px;font-size:13px;font-weight:700;color:var(--green);animation:float 6s ease-in-out infinite}
+.float-note.n1{left:0;top:18%}
+.float-note.n2{right:0;bottom:16%;animation-delay:-3s}
+.float-note small{display:block;font-weight:500;color:var(--ink-2);font-size:11.5px}
+
+/* ---------- Footer ---------- */
+footer{background:var(--green);color:var(--canvas);padding:80px 0 32px}
+.foot-top{display:grid;grid-template-columns:1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(249,248,243,.18)}
+.foot-top h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:12px}
+.foot-top p{color:rgba(249,248,243,.8);max-width:440px}
+.news{display:flex;gap:10px;margin-top:4px}
+.news input{flex:1;min-width:0;background:transparent;border:1px solid rgba(249,248,243,.4);border-radius:999px;padding:14px 18px;color:var(--canvas);transition:border-color .15s,background .15s}
+.news input::placeholder{color:rgba(249,248,243,.65)}
+.news input:hover{border-color:var(--canvas)}
+.news input:focus{outline:none;border-color:var(--canvas);background:rgba(249,248,243,.08);box-shadow:0 0 0 3px rgba(217,107,67,.6)}
+.news .btn{background:var(--terra);color:#fff}
+.news .btn:hover{background:var(--canvas);color:var(--green)}
+.news-msg{margin-top:12px;font-size:14px;font-weight:600;min-height:22px}
+.news-msg.err{color:#F6B9A3}
+.loc-head{display:flex;justify-content:space-between;align-items:baseline;margin:48px 0 24px;gap:16px;flex-wrap:wrap}
+.loc-head h3{font-size:24px}
+.loc-head span{font-size:14px;color:rgba(249,248,243,.75)}
+.loc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.loc-card{border:1px solid rgba(249,248,243,.2);border-radius:var(--r-md);padding:20px;transition:border-color .2s,background .2s,transform .2s;display:flex;flex-direction:column}
+.loc-card:hover{border-color:var(--canvas);background:rgba(249,248,243,.05);transform:translateY(-3px)}
+.loc-card h4{font-size:18px;margin-bottom:4px}
+.loc-card address{font-style:normal;font-size:14px;color:rgba(249,248,243,.8);margin-bottom:14px}
+.loc-card dl{margin:0 0 14px;font-size:13.5px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.loc-card dt{color:rgba(249,248,243,.65)}
+.loc-card dd{margin:0;font-weight:600}
+.loc-card .tel{font-weight:700;font-size:15px;margin-bottom:14px}
+.loc-card .tel:hover{color:#F2B79F}
+.map-link{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:#F2B79F;border-bottom:1px solid transparent;align-self:flex-start;transition:border-color .15s,gap .2s}
+.map-link:hover{border-color:#F2B79F;gap:10px}
+.disclose{margin-top:40px;font-size:12.5px;line-height:1.65;color:rgba(249,248,243,.72);max-width:900px}
+.disclose b{color:var(--canvas)}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:32px;padding-top:24px;border-top:1px solid rgba(249,248,243,.18);font-size:13px;color:rgba(249,248,243,.75)}
+.foot-bottom nav{display:flex;gap:20px}
+.foot-bottom a:hover{color:var(--canvas);text-decoration:underline}
+
+/* ---------- Toast ---------- */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,24px);background:var(--ink);color:var(--canvas);border-radius:999px;padding:13px 22px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:90;display:flex;gap:10px;align-items:center;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast i{width:8px;height:8px;border-radius:50%;background:var(--terra);flex:none}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .loc-grid{grid-template-columns:repeat(2,1fr)}
+  .nav{display:none}
+  .header .btn.order-top{margin-left:0}
+  .burger{display:grid}
+  .header-in{gap:14px}
+  .header .btn.order-top{margin-left:auto}
+  .burger{margin-left:0}
+}
+@media (max-width:900px){
+  .hero{padding:36px 0 56px}
+  .hero-grid,.src-grid,.loy-grid,.foot-top{grid-template-columns:1fr;gap:40px}
+  .src-left{position:static}
+  .chip.c1{left:2%}.chip.c2{right:2%}
+  .hero-stamp{right:2%}
+  .phone-stage{min-height:520px}
+  .phone-stage::after{display:none}
+}
+@media (max-width:640px){
+  .wrap{width:min(100% - 32px,1240px)}
+  .loc{display:none}
+  .announce{font-size:12px}
+  .announce span.sep,.announce .hide-s{display:none}
+  .grid{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .farm{grid-template-columns:72px 1fr;gap:14px}
+  .farm-ico{width:72px;height:72px}
+  .farm:nth-child(even){margin-left:0}
+  .miles{grid-column:1/-1;text-align:left;display:flex;gap:8px;align-items:baseline}
+  .miles b{font-size:24px}
+  .stats b{font-size:24px}
+  .field{flex-direction:column}
+  .news{flex-direction:column}
+  .sec-head{align-items:flex-start}
+  .chip{font-size:12px;padding:7px 12px 7px 8px}
+  .float-note{display:none}
+  .phone{width:260px;height:520px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to menu</a>
+
+<!-- ========== TOP STICKY UTILITIES ========== -->
+<div class="top" id="top">
+  <div class="announce" role="note">Order now for free pickup <span class="sep">•</span> <b>Seasonal Autumn menu live</b><span class="hide-s"> — through November 30</span></div>
+  <header class="header">
+    <div class="wrap header-in">
+      <a class="logo" href="#" aria-label="VERDANT Kitchen &amp; Bowls — home">
+        <span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F9F8F3" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7l7 12 7-12"/></svg></span>
+        <span>VERDANT<small>KITCHEN &amp; BOWLS</small></span>
+      </a>
+
+      <div class="loc" id="loc">
+        <button class="loc-btn" id="locBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="locMenu">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+          <span id="locLabel">Williamsburg, Brooklyn</span>
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="loc-menu" id="locMenu" role="listbox" aria-label="Choose a location"></div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#sourcing">Sourcing</a>
+        <a href="#locations">Locations</a>
+        <a href="#story">Story</a>
+      </nav>
+      <a class="btn btn-primary order-top" href="#menu" id="orderTop">Order Online <span class="badge-count" id="cartCount" hidden>0</span></a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="#menu">Menu</a><a href="#sourcing">Sourcing</a><a href="#locations">Locations</a><a href="#story">Story</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main">
+<!-- ========== HERO ========== -->
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Autumn harvest · 2026</span>
+      <h1 id="h1">Seasonal Bowls Crafted from <em>Local Soil</em></h1>
+      <p class="lead">Kabocha roasted this morning, grains milled 90 miles up the Hudson, and greens that were in the ground two days ago. Built to order, never reheated.</p>
+      <ul class="tags" aria-label="Dietary credentials">
+        <li class="tag"><i></i>Organic</li>
+        <li class="tag"><i></i>Farm-Direct</li>
+        <li class="tag"><i></i>Gluten-Free options</li>
+      </ul>
+
+      <form class="order-box" id="orderForm" novalidate>
+        <div class="seg" role="radiogroup" aria-label="Order mode">
+          <button type="button" role="radio" aria-checked="true" data-mode="pickup">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>Pickup
+          </button>
+          <button type="button" role="radio" aria-checked="false" data-mode="delivery">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6l-3-8h-3M12 9h4l2 8"/></svg>Delivery
+          </button>
+        </div>
+        <div class="field">
+          <label for="addr" id="addrLabel">Pickup location</label>
+          <input id="addr" name="addr" type="text" autocomplete="street-address" placeholder="Enter ZIP or neighborhood">
+          <button class="btn btn-primary btn-lg" type="submit">Start order</button>
+        </div>
+        <p class="order-meta" id="orderMeta" aria-live="polite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Free pickup · ready in about 12 minutes</span>
+        </p>
+      </form>
+    </div>
+
+    <div class="hero-art">
+      <div class="hero-stamp" aria-hidden="true"><div><b>$14</b>Pumpkin<br>bowl</div></div>
+      <div class="hero-frame" id="heroArt"></div>
+      <div class="chip c1"><em style="background:#FBE3D6">🎃</em><span>Kabocha squash<small>Hearthstone Farm · 62 mi</small></span></div>
+      <div class="chip c2"><em style="background:#E3ECD9">🌾</em><span>Heritage farro<small>Stone Barn Mill · 91 mi</small></span></div>
+      <div class="chip c3"><em style="background:#F7DCD0">🍯</em><span>Hot honey drizzle<small>Made in-house weekly</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MENU ========== -->
+<section class="menu" id="menu" aria-labelledby="menuH">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="menuH">The Autumn Menu</h2>
+      <p>Twelve dishes, rewritten every season around what our farms are harvesting. Add to your order and we'll fire it fresh.</p>
+    </div>
+
+    <div class="filters">
+      <div class="cats" role="tablist" aria-label="Menu categories" id="cats"></div>
+      <div class="diet-row" id="diets" role="group" aria-label="Dietary filters">
+        <span>Dietary</span>
+        <button class="pill" aria-pressed="false" data-diet="vegan">Vegan</button>
+        <button class="pill" aria-pressed="false" data-diet="high-protein">High-Protein</button>
+        <button class="pill" aria-pressed="false" data-diet="keto">Keto</button>
+        <button class="pill" aria-pressed="false" data-diet="nut-free">Nut-Free</button>
+        <button class="clear" id="clearDiets" hidden>Clear filters</button>
+      </div>
+    </div>
+
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ========== SOURCING ========== -->
+<section class="sourcing" id="sourcing" aria-labelledby="srcH">
+  <div class="wrap src-grid">
+    <div class="src-left" id="story">
+      <span class="eyebrow">Sourcing &amp; Story</span>
+      <h2 id="srcH">We know every farmer by first name.</h2>
+      <p>VERDANT started in 2019 with one question: why does a salad travel 1,500 miles before it reaches a plate? Seven years on, every kitchen buys direct from farms inside a 100-mile radius, and every farm is named on the menu.</p>
+      <div class="stats">
+        <div><b>5</b><span>partner farms</span></div>
+        <div><b>66</b><span>avg. miles to kitchen</span></div>
+        <div><b>48h</b><span>field to bowl</span></div>
+      </div>
+      <figure class="quote" style="margin:0">
+        <p>“We plant the kabocha in May knowing VERDANT has already bought the whole row. That changes how a farm sleeps at night.”</p>
+        <cite>— Marguerite Doyle, Hearthstone Farm, Hudson NY</cite>
+      </figure>
+    </div>
+
+    <div class="farms" id="farms"></div>
+  </div>
+</section>
+
+<!-- ========== LOYALTY ========== -->
+<section class="loyalty" id="loyalty" aria-labelledby="loyH">
+  <div class="wrap loy-grid">
+    <div>
+      <span class="eyebrow">Verdant Rewards</span>
+      <h2 id="loyH">Eat well.<br>Get paid back.</h2>
+      <p class="lead">Order ahead in the app, skip the line, and earn credit toward your next bowl every single time.</p>
+      <ul class="benefits">
+        <li><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div>10% back on every order<small>Earned as Verdant Credit, applied automatically at checkout.</small></div></li>
+        <li><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div>Secret menu access<small>Members-only one-offs from the line cooks, unlocked first Thursday monthly.</small></div></li>
+        <li><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div>Free birthday bowl<small>Any bowl, any add-on, the whole month of your birthday.</small></div></li>
+        <li><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><div>First look at every season<small>Preview new menus 48 hours before they go public.</small></div></li>
+      </ul>
+      <div class="stores">
+        <a class="store" href="#" aria-label="Download on the App Store">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M12 7v7m-3-3l3 3 3-3"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <a class="store" href="#" aria-label="Get it on Google Play">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5v17l15-8.5L5 3.5z"/></svg>
+          <span><small>Get it on</small><b>Google Play</b></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="phone-stage" aria-hidden="true">
+      <div class="float-note n1">+$1.42 credit<small>from your last order</small></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="scr-top"><span class="logo-s">VERDANT</span><span>9:41</span></div>
+          <div class="scr-hi">Good evening,<br>Alex.</div>
+          <div class="pts">
+            <svg width="54" height="54" viewBox="0 0 54 54"><circle cx="27" cy="27" r="22" fill="none" stroke="rgba(249,248,243,.25)" stroke-width="6"/><circle cx="27" cy="27" r="22" fill="none" stroke="#D96B43" stroke-width="6" stroke-linecap="round" stroke-dasharray="138" stroke-dashoffset="42" transform="rotate(-90 27 27)"/></svg>
+            <div><b>$12.40</b><small>Verdant Credit · 7 of 10 stamps</small></div>
+          </div>
+          <div class="scr-h">Reorder</div>
+          <div class="scr-row"><i style="background:#E7A25A"></i><div><b>Roasted Pumpkin &amp; Ancient Grains</b><small>540 cal · $14.25</small></div><em>+</em></div>
+          <div class="scr-row"><i style="background:#F08D6B"></i><div><b>Wild Salmon Hot Honey</b><small>620 cal · $17.50</small></div><em>+</em></div>
+          <div class="scr-h">Members only</div>
+          <div class="scr-secret">🔒 Smoked Delicata Crunch Bowl <span style="margin-left:auto;color:var(--terra-d)">Thu</span></div>
+        </div>
+      </div>
+      <div class="float-note n2">Order ahead<small>Skip the line · 9 min</small></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer id="locations">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2>Fresh from the field, once a week.</h2>
+        <p>Harvest reports, new-menu previews, and the occasional recipe from our kitchens. No spam, unsubscribe any time.</p>
+      </div>
+      <div>
+        <form class="news" id="newsForm" novalidate>
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
+        <p class="news-msg" id="newsMsg" role="status"></p>
+      </div>
+    </div>
+
+    <div class="loc-head"><h3>Find a kitchen</h3><span>All locations open daily · Pickup shelves &amp; delivery from open to close</span></div>
+    <div class="loc-grid" id="locGrid"></div>
+
+    <p class="disclose"><b>Dietary &amp; allergen disclosure.</b> Our kitchens handle tree nuts, peanuts, sesame, milk, eggs, fish, soy, and wheat. Items marked Vegan, Keto, Nut-Free, or Gluten-Free are prepared to those specifications, but shared surfaces and utensils mean we cannot guarantee any dish is free of cross-contact. Please tell us about allergies when ordering. 2,000 calories a day is used for general nutrition advice; individual needs vary. Nutrition values are calculated from recipes and may vary by up to 10%.</p>
+
+    <div class="foot-bottom">
+      <span>© 2026 VERDANT Kitchen &amp; Bowls, Inc.</span>
+      <nav aria-label="Legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a><a href="#">Careers</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><i></i><span id="toastMsg"></span></div>
+
+<script>
+/* ============ DATA ============ */
+const MENU = [
+  {id:1,cat:'bowls',name:'Roasted Pumpkin & Ancient Grains',ing:'Farro, roasted kabocha, lacinato kale, pickled cranberries, toasted pepitas, maple-tahini',price:14.25,cal:540,p:18,c:72,f:20,tags:['vegan','nut-free'],badge:'Seasonal',
+   art:{bg:'#F3E3CE',base:'#E8D7AE',items:[['#E08A3C','cube'],['#4F7A3A','leaf'],['#A3243B','dot'],['#8A9A3A','dot']],center:['#C9A227','dot']}},
+  {id:2,cat:'bowls',name:'Wild Salmon Hot Honey Bowl',ing:'Seared wild salmon, wild rice, charred broccolini, shaved fennel, hot honey, lemon yogurt',price:17.5,cal:620,p:42,c:48,f:26,tags:['high-protein','nut-free'],badge:'Chef pick',
+   art:{bg:'#E7ECE1',base:'#3B3326',items:[['#6F9A4A','leaf'],['#F4EFE4','leaf'],['#E9B949','dot'],['#2F5A3F','leaf']],center:['#F08D6B','slab']}},
+  {id:3,cat:'bowls',name:'Harvest Chicken & Sweet Potato',ing:'Herb-roasted chicken, sweet potato, shaved brussels, wild rice, apple cider vinaigrette',price:15.75,cal:580,p:44,c:56,f:18,tags:['high-protein','nut-free'],
+   art:{bg:'#F1E6D3',base:'#6B5A3B',items:[['#D98030','cube'],['#7FA35A','leaf'],['#C0392B','dot'],['#E8D7AE','dot']],center:['#E3B97A','slab']}},
+  {id:4,cat:'bowls',name:'Miso Mushroom & Barley',ing:'Roasted shiitake and oyster mushrooms, pearl barley, bok choy, edamame, miso-ginger glaze',price:14.5,cal:510,p:20,c:70,f:14,tags:['vegan','nut-free'],
+   art:{bg:'#E4E9DD',base:'#D9C9A0',items:[['#6E5339','slab'],['#3E7B45','leaf'],['#9DBF5A','dot'],['#F4EFE4','dot']],center:['#4A3A2A','cube']}},
+  {id:5,cat:'salads',name:'Kale Caesar, Reimagined',ing:'Lacinato kale, shaved parmesan, rye crumb, white anchovy dressing, soft herbs, lemon',price:13.75,cal:430,p:16,c:28,f:30,tags:['nut-free'],
+   art:{bg:'#E8EDE2',base:'#5F8A47',items:[['#2F5A3F','leaf'],['#E8D7AE','cube'],['#F4EFE4','dot'],['#7FA35A','leaf']],center:['#F2E6C4','cube']}},
+  {id:6,cat:'salads',name:'Roasted Beet & Chèvre Crunch',ing:'Roasted beets, whipped chèvre, arugula, candied walnuts, shaved shallot, orange-sherry vinaigrette',price:13.95,cal:470,p:14,c:34,f:32,tags:[],
+   art:{bg:'#F3E4E4',base:'#88A86A',items:[['#8E2F47','cube'],['#F6F1E6','dot'],['#6B4A2B','dot'],['#E9A23B','leaf']],center:['#4F7A3A','leaf']}},
+  {id:7,cat:'salads',name:'Shaved Brussels & Honeycrisp',ing:'Shaved brussels sprouts, honeycrisp apple, aged cheddar, toasted pepitas, whole-grain mustard vinaigrette',price:13.25,cal:440,p:15,c:30,f:30,tags:['nut-free'],
+   art:{bg:'#ECEFE0',base:'#A5BF6E',items:[['#C8DB8A','leaf'],['#E9D27A','cube'],['#F0A339','dot'],['#3E7B45','dot']],center:['#EDE3C2','cube']}},
+  {id:8,cat:'plates',name:'Grass-Fed Steak & Chimichurri',ing:'Sliced flat iron, parsley chimichurri, roasted cauliflower, blistered tomatoes, arugula',price:18.95,cal:640,p:52,c:22,f:38,tags:['high-protein','keto','nut-free'],badge:'Best seller',
+   art:{type:'plate',bg:'#E7E2D8',base:'#FFFFFF',items:[['#F4EFE4','cube'],['#C0392B','dot'],['#4F7A3A','leaf'],['#7FA35A','dot']],center:['#8C4A38','slab']}},
+  {id:9,cat:'plates',name:'Citrus Herb Chicken Plate',ing:'Pasture-raised chicken thigh, charred lemon, garlicky greens, roasted radishes, avocado',price:16.25,cal:520,p:50,c:14,f:28,tags:['high-protein','keto','nut-free'],
+   art:{type:'plate',bg:'#EEE9D9',base:'#FFFFFF',items:[['#3E7B45','leaf'],['#C9D77A','cube'],['#C8326B','dot'],['#9DBF5A','dot']],center:['#D9A15E','slab']}},
+  {id:10,cat:'sides',name:'Crispy Smashed Fingerlings',ing:'Hudson Valley fingerlings, rosemary, flaky salt, smoked paprika aioli',price:5.25,cal:260,p:4,c:34,f:12,tags:['vegan','nut-free'],
+   art:{type:'plate',bg:'#EFE6D0',base:'#FFFFFF',items:[['#E3B364','cube'],['#C9962F','cube'],['#3E7B45','leaf'],['#D96B43','dot']],center:['#E8C27A','cube']}},
+  {id:11,cat:'sides',name:'Charred Broccolini & Lemon',ing:'Wood-fired broccolini, lemon zest, chili flake, garlic oil',price:5.5,cal:140,p:6,c:12,f:8,tags:['vegan','keto','nut-free'],
+   art:{type:'plate',bg:'#E2EADB',base:'#FFFFFF',items:[['#2F5A3F','leaf'],['#4F7A3A','leaf'],['#E9D27A','dot'],['#C0392B','dot']],center:['#3E7B45','leaf']}},
+  {id:12,cat:'juices',name:'Green Garden Press',ing:'Cold-pressed kale, cucumber, honeycrisp apple, lemon, ginger',price:7.5,cal:110,p:2,c:26,f:0,tags:['vegan','nut-free'],
+   art:{type:'juice',bg:'#E4EBD9',base:'#8DB65A',items:[['#4F7A3A','leaf'],['#F0E08A','dot'],['#C9D77A','cube']]}}
+];
+const CATS=[['all','All'],['bowls','Warm Bowls'],['salads','Salads'],['plates','Protein Plates'],['sides','Sides'],['juices','Cold-Pressed Juices']];
+const DIET_LABEL={'vegan':'Vegan','high-protein':'High-Protein','keto':'Keto','nut-free':'Nut-Free'};
+const LOCS=[
+  {n:'Williamsburg, Brooklyn',a:'214 Bedford Ave, Brooklyn, NY 11249',h:'7:30a – 9:00p',t:'(718) 555-0142',s:'Open until 9:00p'},
+  {n:'Flatiron, Manhattan',a:'38 W 21st St, New York, NY 10010',h:'7:00a – 9:30p',t:'(212) 555-0188',s:'Open until 9:30p'},
+  {n:'Beacon, Hudson Valley',a:'90 Main St, Beacon, NY 12508',h:'8:00a – 8:00p',t:'(845) 555-0116',s:'Open until 8:00p'},
+  {n:'Montclair, New Jersey',a:'15 Church St, Montclair, NJ 07042',h:'8:00a – 8:30p',t:'(973) 555-0173',s:'Open until 8:30p'}
+];
+const FARMS=[
+  {n:'Hearthstone Farm',w:'Hudson, NY',g:'Kabocha, delicata and butternut squash',mi:62,c:'USDA Organic',bg:'#F3DCC0',ic:'#D96B43',k:'squash'},
+  {n:'Blue Heron Greens',w:'Warwick, NY',g:'Lacinato kale, arugula, bok choy and herbs',mi:48,c:'USDA Organic',bg:'#DCE7D2',ic:'#2F5A3F',k:'leaf'},
+  {n:'Stone Barn Mill',w:'Kingston, NY',g:'Stone-milled farro, barley and wild rice blends',mi:91,c:'Regenerative Organic',bg:'#F1E6C8',ic:'#A8841F',k:'grain'},
+  {n:'Sweetwater Orchards',w:'Red Hook, NY',g:'Honeycrisp apples, pears and cider vinegar',mi:54,c:'Certified Naturally Grown',bg:'#F6D9D3',ic:'#B5362E',k:'apple'},
+  {n:'Ridgeline Pasture Co.',w:'Pine Plains, NY',g:'Grass-fed beef and pasture-raised chicken',mi:77,c:'Animal Welfare Approved',bg:'#E7E1D3',ic:'#6B5A3B',k:'pasture'}
+];
+
+/* ============ ILLUSTRATION ENGINE (self-contained SVG) ============ */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shape(x,y,col,kind,R,r){
+  const rot=(r()*180).toFixed(0);
+  if(kind==='leaf') return `<ellipse cx="${x}" cy="${y}" rx="${R*.1}" ry="${R*.042}" fill="${col}" transform="rotate(${rot} ${x} ${y})"/>`;
+  if(kind==='cube') return `<rect x="${x-R*.04}" y="${y-R*.04}" width="${R*.08}" height="${R*.08}" rx="${R*.016}" fill="${col}" transform="rotate(${rot} ${x} ${y})"/>`;
+  if(kind==='slab') return `<rect x="${x-R*.15}" y="${y-R*.055}" width="${R*.3}" height="${R*.11}" rx="${R*.04}" fill="${col}" transform="rotate(${(r()*70-35).toFixed(0)} ${x} ${y})"/>`;
+  return `<circle cx="${x}" cy="${y}" r="${R*(.02+r()*.014)}" fill="${col}"/>`;
+}
+const COUNT={leaf:9,cube:8,dot:13,slab:3};
+function art(cfg,w,h,seed,alt){
+  const r=rng(seed), cx=w/2, cy=h/2, R=Math.min(w,h)*.42;
+  let s=`<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${alt}" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="${cfg.bg}"/>`;
+  if(cfg.type==='juice'){
+    const bw=R*.62, bh=R*1.5, bx=cx-bw/2, by=cy-bh/2+R*.1;
+    for(let i=0;i<14;i++){ s+=shape(cx+(r()-.5)*R*2.3,cy+(r()-.5)*R*1.5,cfg.items[i%cfg.items.length][0],cfg.items[i%cfg.items.length][1],R,r).replace('/>',' opacity=".55"/>'); }
+    s+=`<rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="${bw*.28}" fill="${cfg.base}"/>`;
+    s+=`<rect x="${bx+bw*.14}" y="${by+bh*.1}" width="${bw*.1}" height="${bh*.6}" rx="${bw*.05}" fill="#fff" opacity=".3"/>`;
+    s+=`<rect x="${cx-bw*.3}" y="${by-R*.16}" width="${bw*.6}" height="${R*.2}" rx="${R*.04}" fill="#1E3A2B"/>`;
+    s+=`<rect x="${bx+bw*.12}" y="${by+bh*.38}" width="${bw*.76}" height="${bh*.3}" rx="${R*.04}" fill="#F9F8F3"/>`;
+    s+=`<text x="${cx}" y="${by+bh*.54}" text-anchor="middle" font-family="Plus Jakarta Sans,Arial,sans-serif" font-weight="800" font-size="${R*.1}" letter-spacing="1.5" fill="#1E3A2B">VERDANT</text>`;
+    s+=`<text x="${cx}" y="${by+bh*.63}" text-anchor="middle" font-family="Plus Jakarta Sans,Arial,sans-serif" font-weight="600" font-size="${R*.07}" fill="#D96B43">COLD-PRESSED</text>`;
+    return s+'</svg>';
+  }
+  const plate=cfg.type==='plate';
+  s+=`<circle cx="${cx}" cy="${cy}" r="${R*1.08}" fill="rgba(26,26,26,.05)"/>`;
+  s+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="#FBF8F0" stroke="rgba(30,58,43,.14)" stroke-width="1.5"/>`;
+  s+=`<circle cx="${cx}" cy="${cy}" r="${R*(plate?.84:.86)}" fill="${cfg.base}" ${plate?'stroke="rgba(30,58,43,.1)"':''}/>`;
+  const n=cfg.items.length;
+  cfg.items.forEach(([col,kind],i)=>{
+    const a=(i/n)*Math.PI*2-Math.PI/2+r()*.3, px=cx+Math.cos(a)*R*.46, py=cy+Math.sin(a)*R*.46;
+    for(let k=0;k<COUNT[kind];k++) s+=shape((px+(r()-.5)*R*.5).toFixed(1),(py+(r()-.5)*R*.5).toFixed(1),col,kind,R,r);
+  });
+  if(cfg.center){const [col,kind]=cfg.center;for(let k=0;k<(kind==='slab'?3:6);k++) s+=shape((cx+(r()-.5)*R*.28).toFixed(1),(cy+(r()-.5)*R*.28).toFixed(1),col,kind,R,r);}
+  return s+'</svg>';
+}
+function farmIcon(k,c){
+  const m={
+    squash:`<path d="M12 5c-1 0-1.5 1-1.5 2M12 7c-5 0-8 3-8 6s3 6 8 6 8-3 8-6-3-6-8-6zM12 7v12M8 8c-2 2-2 8 0 10M16 8c2 2 2 8 0 10"/>`,
+    leaf:`<path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14zM5 19l8-8"/>`,
+    grain:`<path d="M12 21V8M12 8c-2-1-3-3-3-5 2 0 3 2 3 5zm0 0c2-1 3-3 3-5-2 0-3 2-3 5zM12 13c-2-1-4-3-4-5M12 13c2-1 4-3 4-5M12 18c-2-1-4-3-4-5M12 18c2-1 4-3 4-5"/>`,
+    apple:`<path d="M12 8c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.5 2-.5s1 .5 2 .5c2 0 5-4 5-8 0-5-4-7-7-5zM12 8c0-2 1-4 3-5"/>`,
+    pasture:`<path d="M3 20h18M5 20V9l7-5 7 5v11M10 20v-6h4v6"/>`
+  };
+  return `<svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${m[k]}</svg>`;
+}
+
+/* ============ HERO ART ============ */
+document.getElementById('heroArt').innerHTML = art(
+  {bg:'#E7ECE1',base:'#2F281E',items:[['#E08A3C','cube'],['#6F9A4A','leaf'],['#F4EFE4','leaf'],['#A3243B','dot'],['#E9B949','dot'],['#2F5A3F','leaf']],center:['#F08D6B','slab']},
+  600,600,77,'Top-down view of the signature Wild Salmon Hot Honey bowl with roasted squash, greens and wild rice');
+
+/* ============ STATE & HELPERS ============ */
+const $=s=>document.querySelector(s);
+const state={cat:'all',diets:new Set(),cart:0,subtotal:0};
+const money=n=>'$'+n.toFixed(2);
+let toastT;
+function toast(msg){const t=$('#toast');$('#toastMsg').textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);}
+
+/* sticky offset */
+function setTopH(){document.documentElement.style.setProperty('--top-h',$('#top').offsetHeight+'px');}
+setTopH();addEventListener('resize',setTopH);
+if('ResizeObserver' in window) new ResizeObserver(setTopH).observe($('#top'));
+
+/* ============ LOCATION DROPDOWN ============ */
+const locMenu=$('#locMenu'),locBtn=$('#locBtn');
+locMenu.innerHTML=LOCS.map((l,i)=>`<button role="option" aria-selected="${i===0}" data-i="${i}"><strong>${l.n}</strong><span>${l.s} · ${l.a.split(',')[0]}</span></button>`).join('');
+function closeLoc(){locMenu.classList.remove('open');locBtn.setAttribute('aria-expanded','false');}
+locBtn.addEventListener('click',e=>{e.stopPropagation();const o=locMenu.classList.toggle('open');locBtn.setAttribute('aria-expanded',o);});
+locMenu.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  locMenu.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected','false'));
+  b.setAttribute('aria-selected','true');
+  $('#locLabel').textContent=LOCS[b.dataset.i].n;closeLoc();toast('Location set to '+LOCS[b.dataset.i].n);
+});
+document.addEventListener('click',e=>{if(!e.target.closest('#loc'))closeLoc();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLoc();$('#mobileNav').classList.remove('open');$('#burger').setAttribute('aria-expanded','false');setTimeout(setTopH,0);}});
+
+/* mobile nav */
+$('#burger').addEventListener('click',()=>{const o=$('#mobileNav').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o);setTimeout(setTopH,0);});
+$('#mobileNav').addEventListener('click',e=>{if(e.target.tagName==='A'){$('#mobileNav').classList.remove('open');$('#burger').setAttribute('aria-expanded','false');setTimeout(setTopH,0);}});
+
+/* ============ ORDER MODE ============ */
+const modes={
+  pickup:{label:'Pickup location',ph:'Enter ZIP or neighborhood',meta:'Free pickup · ready in about 12 minutes',ac:'postal-code'},
+  delivery:{label:'Delivery address',ph:'Enter your street address',meta:'Delivery from $2.99 · 25–35 minutes',ac:'street-address'}
+};
+let mode='pickup';
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+  mode=b.dataset.mode;
+  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-checked',x===b));
+  const m=modes[mode];$('#addrLabel').textContent=m.label;$('#addr').placeholder=m.ph;$('#addr').autocomplete=m.ac;$('#orderMeta span').textContent=m.meta;
+}));
+$('#orderForm').addEventListener('submit',e=>{
+  e.preventDefault();const v=$('#addr').value.trim();
+  if(!v){$('#addr').focus();toast(mode==='pickup'?'Add a ZIP or neighborhood to find your kitchen':'Add a delivery address to continue');return;}
+  toast((mode==='pickup'?'Pickup':'Delivery')+' set for '+v);
+  $('#menu').scrollIntoView({behavior:'smooth'});
+});
+
+/* ============ MENU RENDER ============ */
+function counts(){const o={};CATS.forEach(([k])=>o[k]=MENU.filter(m=>(k==='all'||m.cat===k)&&[...state.diets].every(d=>m.tags.includes(d))).length);return o;}
+function renderCats(){
+  const c=counts();
+  $('#cats').innerHTML=CATS.map(([k,l])=>`<button class="cat" role="tab" aria-selected="${state.cat===k}" data-cat="${k}">${l}<sup>${c[k]}</sup></button>`).join('');
+}
+function renderGrid(){
+  const list=MENU.filter(m=>(state.cat==='all'||m.cat===state.cat)&&[...state.diets].every(d=>m.tags.includes(d)));
+  $('#count').textContent=list.length?`Showing ${list.length} ${list.length===1?'dish':'dishes'}${state.diets.size?' · '+[...state.diets].map(d=>DIET_LABEL[d]).join(' + '):''}`:'';
+  $('#clearDiets').hidden=!state.diets.size;
+  if(!list.length){$('#grid').innerHTML=`<div class="empty"><b>Nothing matches that combination yet.</b>Try removing a dietary filter, or browse another category.</div>`;return;}
+  $('#grid').innerHTML=list.map((m,i)=>{
+    const alt=`Top-down photo illustration of ${m.name}`;
+    const badges=[m.badge,...m.tags.map(t=>DIET_LABEL[t])].filter(Boolean).map(b=>`<span class="badge">${b}</span>`).join('');
+    return `<article class="card" style="animation-delay:${i*45}ms">
+      <div class="card-img">${art(m.art,400,300,m.id*31+7,alt)}
+        <div class="macro"><b>${m.cal} cal</b><span>P${m.p} · C${m.c} · F${m.f}</span></div></div>
+      <div class="card-body">
+        <div class="badges">${badges}</div>
+        <h3>${m.name.replace('&','&amp;')}</h3>
+        <p class="ing">${m.ing}</p>
+        <div class="card-foot"><span class="price">${money(m.price)}</span>
+        <button class="add" data-id="${m.id}" aria-label="Add ${m.name} to order"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Add</span></button></div>
+      </div></article>`;
+  }).join('');
+}
+$('#cats').addEventListener('click',e=>{const b=e.target.closest('.cat');if(!b)return;state.cat=b.dataset.cat;renderCats();renderGrid();});
+$('#diets').addEventListener('click',e=>{
+  const p=e.target.closest('.pill');
+  if(p){const d=p.dataset.diet;state.diets.has(d)?state.diets.delete(d):state.diets.add(d);p.setAttribute('aria-pressed',state.diets.has(d));renderCats();renderGrid();}
+});
+$('#clearDiets').addEventListener('click',()=>{state.diets.clear();document.querySelectorAll('.pill').forEach(p=>p.setAttribute('aria-pressed','false'));renderCats();renderGrid();});
+$('#grid').addEventListener('click',e=>{
+  const b=e.target.closest('.add');if(!b)return;
+  const m=MENU.find(x=>x.id==b.dataset.id);
+  state.cart++;state.subtotal+=m.price;
+  const cc=$('#cartCount');cc.hidden=false;cc.textContent=state.cart;cc.classList.add('bump');setTimeout(()=>cc.classList.remove('bump'),200);
+  b.classList.add('added');b.querySelector('span').textContent='Added';
+  setTimeout(()=>{b.classList.remove('added');b.querySelector('span').textContent='Add';},1400);
+  toast(`${m.name} added · Subtotal ${money(state.subtotal)}`);
+});
+renderCats();renderGrid();
+
+/* ============ FARMS ============ */
+$('#farms').innerHTML=FARMS.map(f=>`<article class="farm">
+  <div class="farm-ico" style="background:${f.bg}">${farmIcon(f.k,f.ic)}</div>
+  <div><h3>${f.n}</h3><p class="where">${f.w}</p><p class="grows">${f.g}</p>
+    <span class="cert"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>${f.c}</span></div>
+  <div class="miles"><b>${f.mi}</b><span>miles away</span></div></article>`).join('');
+
+/* ============ FOOTER LOCATIONS ============ */
+$('#locGrid').innerHTML=LOCS.map(l=>`<article class="loc-card"><h4>${l.n}</h4>
+  <address>${l.a}</address>
+  <dl><dt>Daily</dt><dd>${l.h}</dd><dt>Status</dt><dd>${l.s}</dd></dl>
+  <a class="tel" href="tel:${l.t.replace(/\D/g,'')}">${l.t}</a>
+  <a class="map-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('VERDANT Kitchen & Bowls '+l.a)}">Open in maps <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></article>`).join('');
+
+/* ============ NEWSLETTER ============ */
+$('#newsForm').addEventListener('submit',e=>{
+  e.preventDefault();const v=$('#email').value.trim(),m=$('#newsMsg');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){m.textContent='Please enter a valid email address.';m.className='news-msg err';$('#email').focus();return;}
+  m.textContent='You\'re in. Your first harvest report lands Thursday.';m.className='news-msg';$('#email').value='';
+});
+</script>
+</body>
+</html>
